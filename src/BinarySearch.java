@@ -1,4 +1,3 @@
-import static java.lang.Boolean.TRUE;
 
 public class BinarySearch {
     public static void main(String[] args) {

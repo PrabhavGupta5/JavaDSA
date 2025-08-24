@@ -19,6 +19,8 @@ public class CeilingFloorElement {
         System.out.println("Result for floor element: " + result2);
         System.out.println("Result for letter element: " + letterResult);
     }
+
+    // return the smallest number greater than or equal to target
     public static int ceilingElement(int[] arr, int target){
         int start = 0;
         int end = arr.length - 1;
@@ -37,6 +39,7 @@ public class CeilingFloorElement {
         return arr[start];
     }
 
+    // return the greatest number smaller than or equal to target
     public static int floorElement(int[] arr, int target){
         int start = 0;
         int end = arr.length - 1;
@@ -55,6 +58,7 @@ public class CeilingFloorElement {
         return arr[end];
     }
 
+    // finding the smallest character larger than target
     public static char nextGreatestLetter(char[] arr, char target) {
         int start = 0;
         int end = arr.length - 1;
@@ -62,11 +66,9 @@ public class CeilingFloorElement {
         while(start <= end){
             int mid = (start + end) / 2;
 
-            if(arr[mid]==target)
-                return arr[mid+1];
-
             if(arr[mid] < target)
                 start = mid + 1;
+
             else if(arr[mid] > target)
                 end = mid - 1;
         }
