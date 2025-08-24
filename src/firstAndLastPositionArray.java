@@ -1,10 +1,16 @@
+import java.util.Arrays;
+
 public class firstAndLastPositionArray {
     public static void main(String[] args) {
+        int[] arr = { 2, 3, 4, 4, 4, 5, 6, 7};
+        int[] result = search(arr, 4);
+
+        System.out.println("Result: " + Arrays.toString(result));
 
     }
 
     // In this case we will run binary search to find the first occurrence and then to find the second occurrence so the time complexity will be logN
-    public int[] search(int [] nums, int target){
+    public static int[] search(int [] nums, int target){
         int[] ans = {-1, -1};
 
         int start = checkTarget(nums, target, true);
@@ -15,7 +21,7 @@ public class firstAndLastPositionArray {
         return ans;
     }
 
-    public int checkTarget(int[] nums, int target, boolean firstOcc){
+    public static int checkTarget(int[] nums, int target, boolean firstOcc){
         int ans = -1;
         int start = 0;
         int end = nums.length - 1;
