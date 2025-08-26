@@ -1,4 +1,4 @@
-// In this question we have to find the element in a sorted array of infinite elements
+package BinarySearch;// In this question we have to find the element in a sorted array of infinite elements
 // https://www.geeksforgeeks.org/dsa/find-position-element-sorted-array-infinite-numbers/
 
 public class InfiniteArrayBinary {

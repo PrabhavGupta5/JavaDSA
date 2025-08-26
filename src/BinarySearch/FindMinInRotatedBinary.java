@@ -1,3 +1,5 @@
+package BinarySearch;
+
 public class FindMinInRotatedBinary {
     public static void main(String[] args) {
 
