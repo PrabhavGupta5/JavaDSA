@@ -5,6 +5,8 @@ import java.util.Queue;
 
 
 // https://leetcode.com/problems/implement-stack-using-queues/
+
+// We are using a single queue to implement stack
 public class ImplementStusingQue {
     Queue<Integer> queue = new LinkedList<>();
 
