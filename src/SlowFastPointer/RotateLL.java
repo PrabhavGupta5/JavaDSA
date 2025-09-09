@@ -13,7 +13,6 @@ public class RotateLL {
 
         while(tail.next != null) {
             len+=1;
-            if (tail.next == null) break;  // Stop at last node
             tail = tail.next;
         }
 
