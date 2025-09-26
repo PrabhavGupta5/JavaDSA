@@ -3,7 +3,7 @@ package DynamicProgramming;
 // https://leetcode.com/problems/partition-equal-subset-sum/
 // https://www.youtube.com/watch?v=UmMh7xp07kY&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go&index=8
 // This problem is an advancement of Subset problem
-public class EqualSumSubset {
+public class EqualSumSubsetPartition {
     public static boolean solve(int n,int[] nums,int sum){
         boolean[][] t = new boolean[n+1][sum+1];
 
