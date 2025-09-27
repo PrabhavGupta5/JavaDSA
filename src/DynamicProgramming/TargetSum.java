@@ -9,7 +9,7 @@ public class TargetSum {
         int sum = 0;
         for(int x : nums)
             sum += x;
-        if(((sum - target) % 2 == 1) || (target > sum))
+        if(((sum - target) % 2 == 1) || (target > sum)) //  sum - target should always be divisible by 2 then only we can find subsets.
             return 0;
 
         int n = nums.length;
