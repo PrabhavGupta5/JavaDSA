@@ -3,6 +3,7 @@ package DynamicProgramming;
 // https://leetcode.com/problems/coin-change-ii/
 //https://www.youtube.com/watch?v=I4UR2T6Ro3w&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go&index=16
 
+// This problem is of maximum number of ways
 public class CoinChangeII {
 
     public int change(int amount, int[] coins) {
