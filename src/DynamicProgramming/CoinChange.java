@@ -10,12 +10,12 @@ public class CoinChange {
         // Initialize first row (0 coins): 0 coins needed to make 0 amount,
         // Integer.MAX_VALUE-1 for all other amounts
         t[0][0] = 0;
-        for (int i = 1; i <= amount; i++) {
-            t[0][i] = Integer.MAX_VALUE - 1;
+        for (int j = 0; j <= amount; j++) {
+            t[0][j] = Integer.MAX_VALUE - 1;
         }
         // Initialize first column (amount 0): 0 coins needed to make amount 0
-        for (int n = 1; n <= coins.length; n++) {
-            t[n][0] = 0;
+        for (int i = 0; i <= coins.length; i++) {
+            t[i][0] = 0;
         }
 
         for (int i = 1; i <= coins.length; i++) {
