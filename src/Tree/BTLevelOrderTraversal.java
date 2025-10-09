@@ -43,8 +43,9 @@ public class BTLevelOrderTraversal {
     }
 
     // This question is same as BFS level order, but we have to reverse the list for odd levels
+    // https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/
     static class zigzagOrder {
-        public List<List<Integer>> levelOrder(TreeNode root) {
+        public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
             List<List<Integer>> res = new ArrayList<>();
             boolean reverseFlag = true;
             if (root == null)
@@ -77,5 +78,79 @@ public class BTLevelOrderTraversal {
         }
     }
 
+    // https://leetcode.com/problems/binary-tree-level-order-traversal-ii/description/
+    // This Question is also basically same as BFS level order, just reverse the list at the end to get bottom up list
+    static class BottomUpLevelOrder {
+        public List<List<Integer>> levelOrderII(TreeNode root) {
+            List<List<Integer>> res = new ArrayList<>();
+            if (root == null)
+                return res;
 
+            Queue<TreeNode> q = new LinkedList<>();
+            q.offer(root);
+
+            while (!q.isEmpty()) {
+                int levelSize = q.size();
+                List<Integer> currentList = new ArrayList<>();
+
+                for (int i = 0; i < levelSize; i++) {
+                    TreeNode currentNode = q.poll();
+                    currentList.add(currentNode.val);
+
+                    if (currentNode.left != null)
+                        q.offer(currentNode.left);
+
+                    if (currentNode.right != null)
+                        q.offer(currentNode.right);
+                }
+                res.add(currentList);
+            }
+
+            Collections.reverse(res);
+            return res;
+        }
+    }
+
+
+    // This solution is for connect Binary Tree
+    static class Node {
+        public int val;
+        public Node left;
+        public Node right;
+        public Node next;
+
+        public Node() {
+        }
+
+        public Node(int _val) {
+            val = _val;
+        }
+
+        public Node(int _val, Node _left, Node _right, Node _next) {
+            val = _val;
+            left = _left;
+            right = _right;
+            next = _next;
+        }
+
+        // https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
+        static class connectBST {
+            public Node connect(Node root) {
+                if (root == null) return null;
+                Node leftMost = root;
+
+                while (leftMost.left != null) {
+                    Node current = leftMost;
+                    while (current != null) {
+                        current.left.next = current.right;
+                        if (current.next != null)
+                            current.right.next = current.next.left;
+                        current = current.next;
+                    }
+                    leftMost = leftMost.left;
+                }
+                return root;
+            }
+        }
+    }
 }
