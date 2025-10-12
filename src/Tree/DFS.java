@@ -15,7 +15,7 @@ public class DFS {
     }
 
     // https://leetcode.com/problems/validate-binary-search-tree/
-    // here i used pre order traversal and setting limits to each node val adn checking by recursion
+    // here I used pre-order traversal and setting limits to each node val adn checking by recursion
 
     static class ValidBST {
         public boolean isValidBST(TreeNode root) {
@@ -52,6 +52,37 @@ public class DFS {
             }
         }
     }
+
+    // For Kth Smallest, We will use Inorder Traversal as Inorder traversal always visits nodes from smallest to largest.
+
+//    Summary
+//	•	Traverse left subtree.
+//	•	Visit current node, increment count.
+//            •	If count == k, return this node.
+//	•	Otherwise, traverse right subtree.
+//	•	Propagate the found node up the recursion to stop further traversal.
+
+    static class KthSmallest {
+        int count = 0;
+        public int kthSmallest(TreeNode root, int k) {
+            return helper(root, k).val;
+        }
+
+        public TreeNode helper(TreeNode root, int k) {
+            if (root == null)
+                return null;
+            TreeNode left = helper(root.left, k);
+            if (left != null)
+                return left;   // if the kth smallest element has been found in the left subtree, return it immediately.
+            count++;
+            if(count == k)
+                return root;
+
+            return helper(root.right, k);
+        }
+    }
+
+
 
 
 
