@@ -1,5 +1,8 @@
 package Tree;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DFS {
 
     public static class TreeNode {
@@ -11,6 +14,9 @@ public class DFS {
             this.val = val;
             this.left = left;
             this.right = right;
+        }
+
+        public TreeNode(int rootVal) {
         }
     }
 
@@ -79,6 +85,47 @@ public class DFS {
                 return root;
 
             return helper(root.right, k);
+        }
+    }
+
+    // Construct a binary Tree from Inorder and Preorder
+    // 	•	Used the next preorder value as the root,
+    //	•	Split the inorder array into left and right subtrees using the root’s index,
+    //	•	Recursively constructed left, then right subtrees using updated indices, avoiding array slicing.
+
+    // So the preorderIndex increments like this:
+    //Start at root (preorderIndex = 0)
+    //Go down left subtree nodes (preorderIndex increments as you pick each root)
+    //Once left subtree is fully built, you move on to right subtree nodes
+    //This way, preorderIndex always points to the next node to process, moving from leftmost subtree roots to rightmost subtree roots.
+
+    // https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/submissions/
+    static class Construct {
+        private Map<Integer, Integer> inorderMap;
+        private int preorderIndex;
+
+        public TreeNode buildTree(int[] preorder, int[] inorder) {
+            inorderMap = new HashMap<>();
+            for (int i = 0; i < inorder.length; i++) {
+                inorderMap.put(inorder[i], i);
+            }
+            preorderIndex = 0;
+            return helper(preorder, 0, inorder.length - 1);
+        }
+
+        private TreeNode helper(int[] preorder, int inorderStart, int inorderEnd) {
+            if (inorderStart > inorderEnd) {
+                return null;
+            }
+            int rootVal = preorder[preorderIndex++];
+            TreeNode root = new TreeNode(rootVal);
+
+            int inorderRootIndex = inorderMap.get(rootVal);
+
+            root.left = helper(preorder, inorderStart, inorderRootIndex - 1);
+            root.right = helper(preorder, inorderRootIndex + 1, inorderEnd);
+
+            return root;
         }
     }
 
