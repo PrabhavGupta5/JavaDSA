@@ -1,7 +1,6 @@
 package Tree;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class DFS {
 
@@ -128,6 +127,123 @@ public class DFS {
             return root;
         }
     }
+
+    // We call: goodNodes(root) → which calls dfs(3, 3)
+    //Step-by-step:
+    //dfs(3, 3):
+    //Is 3 ≥ 3? ✅ Yes → good = 1
+    //maxSoFar stays 3
+    //Recurse:
+    //dfs(1, 3)
+    //dfs(4, 3)
+    //dfs(1, 3):
+    //Is 1 ≥ 3? ❌ No → good = 0
+    //maxSoFar remains 3
+    //Children are null → both return 0
+    //So this returns: 0
+    //dfs(4, 3):
+    //Is 4 ≥ 3? ✅ Yes → good = 1
+    //maxSoFar becomes 4
+    //Recurse: dfs(5, 4)
+    //dfs(5, 4):
+    //Is 5 ≥ 4? ✅ Yes → good = 1
+    //maxSoFar becomes 5
+    //Children are null → return 0
+    //Returns: 1
+    //So:
+    //dfs(5) returns 1
+    //dfs(4) = 1 (itself) + 1 (left) = 2
+    //dfs(1) = 0
+    //dfs(3) = 1 (itself) + 0 (left) + 2 (right) = 3
+    //🔚 Final Return Value = 3 Good Nodes
+    //Which are:
+    //3 (root)
+    //4 (right)
+    //5 (left of right)
+
+    /*
+Tree:
+      3
+     / \
+    1   4
+       /
+      5
+
+Steps:
+- dfs(3, 3): 3 >= 3 → good = 1 → max = 3
+  - dfs(1, 3): 1 < 3 → good = 0 → returns 0
+  - dfs(4, 3): 4 >= 3 → good = 1 → max = 4
+    - dfs(5, 4): 5 >= 4 → good = 1 → returns 1
+    - dfs(4) returns 1 (self) + 1 (left) = 2
+- dfs(3) returns 1 (self) + 0 (left) + 2 (right) = 3
+
+Good Nodes = 3 → [3, 4, 5]
+*/
+
+    // https://leetcode.com/problems/count-good-nodes-in-binary-tree/
+
+    static class CountGoodNodes {
+        public int goodNodes(TreeNode root) {
+            return helper(root, root.val);
+        }
+
+        public int helper(TreeNode root, int maxSoFar) {
+            if(root == null)
+                return 0;
+            int good = 0;
+            if(root.val >= maxSoFar)
+                good = 1;
+            maxSoFar = Math.max(maxSoFar, root.val);
+
+            good = good + helper(root.left, maxSoFar);
+            good = good + helper(root.right, maxSoFar);
+
+            return good;
+
+        }
+    }
+
+    // https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
+    static class SerializeAndDeserialize {
+
+        // Encodes a tree to a single string.
+        public String serialize(TreeNode root) {
+            StringBuilder sb = new StringBuilder();
+            shelper(root, sb);
+            return sb.toString();
+        }
+
+        public void shelper(TreeNode root, StringBuilder sb ) {
+            if(root == null) {
+                sb.append("null,");
+                return;
+            }
+
+            sb.append(root.val).append(",");
+            shelper(root.left, sb);
+            shelper(root.right, sb);
+        }
+
+        // Decodes your encoded data to tree.
+        public TreeNode deserialize(String data) {
+            String[] nodes = data.split(",");
+            Queue<String> queue = new LinkedList<>(Arrays.asList(nodes));
+            return dhelper(queue);
+        }
+
+        public TreeNode dhelper(Queue<String> queue) {
+            String val = queue.poll();
+            if(val.equals("null"))
+                return null;
+            TreeNode node = new TreeNode(Integer.parseInt(val));
+            node.left = dhelper(queue);
+            node.right = dhelper(queue);
+            return node;
+        }
+
+    }
+
+
 
 
 
