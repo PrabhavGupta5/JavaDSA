@@ -4,7 +4,7 @@ package SlowFastPointer;
 // https://leetcode.com/problems/add-two-numbers/
 
 // https://www.youtube.com/watch?v=XmRrGzR6udg
-public class AddtwoLL {
+public class AddTwoLL {
 
 /**
  * Definition for singly-linked list.

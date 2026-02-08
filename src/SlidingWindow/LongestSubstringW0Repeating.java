@@ -5,7 +5,7 @@ import java.util.Set;
 
 
 // https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
-// This is solved by sliding window, pls watch the youtube video, reference given in the other problem
+// This is solved by sliding window, pls watch the YouTube video, reference given in the other problem
 
 public class LongestSubstringW0Repeating {
     public int lengthOfLongestSubstring(String s) {
