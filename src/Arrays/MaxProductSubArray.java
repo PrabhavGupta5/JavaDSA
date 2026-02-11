@@ -27,10 +27,10 @@ public class MaxProductSubArray {
                 leftProduct = leftProduct == 0 ? 1 : leftProduct;
                 rightProduct = rightProduct == 0 ? 1 : rightProduct;
 
-                //prefix product
+                //prefix product, moving from left
                 leftProduct *= nums[i];
 
-                //suffix product
+                //suffix product, moving from right 
                 rightProduct *= nums[nums.length - 1 - i];
 
                 ans = Math.max(ans, Math.max(leftProduct, rightProduct));
