@@ -1,7 +1,7 @@
 package Arrays;
 
 public class MaxProductSubArray {
-    // Two pointer Approach
+    // Two pointer Approach of kadane's
     // Explanation :
     //1.) Through intuition explanation we know that if all the elements are positive or the negative elements are even
     // then ur answer will be product of complete array which u will get in variable l and r at the last iteration.
