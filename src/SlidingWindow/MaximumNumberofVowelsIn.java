@@ -15,12 +15,13 @@ public class MaximumNumberofVowelsIn {
 
             // If window size is greater than k, slide the window from the left
             if (i - left + 1 > k) {
-                // If the left character is vowel, decrement count
+                // If the left(removing character from the window ) character is vowel, decrement count
                 if (s.charAt(left) == 'a' || s.charAt(left) == 'e'
                         || s.charAt(left) == 'i' || s.charAt(left) == 'o' || s.charAt(left) == 'u') {
                     count--;
                     // Early exit optimization: if max reached k, return immediately
-                    if (max == k) return max;
+                    if (max == k)
+                        return max;
                 }
                 left++; // Move left pointer forward to shrink the window
             }

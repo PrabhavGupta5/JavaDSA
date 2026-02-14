@@ -28,13 +28,11 @@ public class LongestSubstringW0Repeating {
 
         return maxLength;
     }
-}
 
-// Second approach to solve by map using count frequency
+    // Second approach to solve by HashMap using count frequency
 
-class Solution {
-    public int lengthOfLongestSubstring(String s) {
-// eg : s = "abba"
+    public int lengthOfLongestSubstringII(String s) {
+    // eg : s = "abba"
         Map<Character, Integer> map = new HashMap<>();
         int left = 0;
         int maxLength = 0;
@@ -60,4 +58,6 @@ class Solution {
         return maxLength;
     }
 }
+
+
 
