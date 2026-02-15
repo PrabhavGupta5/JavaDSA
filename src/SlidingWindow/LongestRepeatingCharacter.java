@@ -31,7 +31,6 @@ public class LongestRepeatingCharacter {
 
             maxLength = Math.max(maxLength, right - left + 1);
         }
-
         return maxLength;
     }
 }
