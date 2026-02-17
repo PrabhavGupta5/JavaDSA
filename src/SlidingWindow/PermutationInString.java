@@ -7,8 +7,6 @@ public class PermutationInString {
         int[] s1Count = new int[26];
         int[] s2Count = new int[26];
 
-        boolean res = false;
-
         // We have to fill the frequency array for s1
         for (int i = 0; i < s1.length(); i++) {
             char c = s1.charAt(i);
@@ -17,6 +15,7 @@ public class PermutationInString {
 
         int left = 0;
 
+        // filling the frequency for s2
         for(int right=0; right < s2.length(); right++) {
             s2Count[s2.charAt(right) - 'a']++;
 
@@ -31,6 +30,6 @@ public class PermutationInString {
 
         }
 
-        return res;
+        return false;
     }
 }
