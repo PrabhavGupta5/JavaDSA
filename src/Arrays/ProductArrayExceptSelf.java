@@ -9,6 +9,7 @@ public class ProductArrayExceptSelf {
     // Step 2: Build suffix array where suffix[i] is the product of all elements to the right of i
     // Step 3: Multiply prefix and suffix arrays to get the final result where result[i] = prefix[i] * suffix[i]
     // We can optimize the space complexity to O(1) by using the result array to store the prefix products and then multiplying it with the suffix products on the fly.
+
     public int[] productExceptSelf(int[] nums) {
         int n = nums.length;
 
