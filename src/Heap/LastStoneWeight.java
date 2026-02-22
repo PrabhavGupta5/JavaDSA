@@ -13,8 +13,8 @@ public class LastStoneWeight {
     public int lastStoneWeight(int[] stones) {
         PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);
 
-        for(int i = 0; i < stones.length; i++) {
-            pq.add(stones[i]);
+        for (int stone : stones) {
+            pq.add(stone);
         }
 
         while(pq.size() > 1) {
