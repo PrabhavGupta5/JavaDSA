@@ -19,7 +19,7 @@ public class KClosePointsOrigin {
         for (int[] point : points) {
             maxHeap.add(point);
 
-            if (maxHeap.size() > k) { 
+            if (maxHeap.size() > k) {
                 maxHeap.poll();  // remove farthest point
             }
         }
