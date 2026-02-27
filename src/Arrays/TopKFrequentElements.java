@@ -20,7 +20,7 @@ public class TopKFrequentElements {
             freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
         }
 
-        // Step 2: Bucket Array
+        // Step 2: Bucket Arrays.Array
         List<Integer>[] buckets = new List[nums.length + 1];
 
         for (int key : freqMap.keySet()) {

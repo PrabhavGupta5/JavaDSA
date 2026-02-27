@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/richest-customer-wealth/description/
+package Arrays;// https://leetcode.com/problems/richest-customer-wealth/description/
 
 public class RichestCustomerWealth {
     public static void main(String[] args) {
