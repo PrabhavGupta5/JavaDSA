@@ -52,6 +52,7 @@ public class DesignTwitter {
         }
 
         public void postTweet(int userId, int tweetId) {
+            // increment time counter for each tweet to keep track of the time of the tweets, so that we can return the 10 most recent tweets in getNewsFeed method
             timeCounter++;
             //checking if user exists, if not create a new user and add the tweet to the user's list of tweets
             if(!userMap.containsKey(userId)){
