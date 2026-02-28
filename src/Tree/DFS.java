@@ -20,7 +20,7 @@ public class DFS {
     }
 
     // https://leetcode.com/problems/validate-binary-search-tree/
-    // here I used pre-order traversal and setting limits to each node val adn checking by recursion
+    // here I used pre-order traversal and setting limits to each node val and checking by recursion
 
     static class ValidBST {
         public boolean isValidBST(TreeNode root) {
