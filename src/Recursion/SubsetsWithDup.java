@@ -6,8 +6,14 @@ import java.util.List;
 
 public class SubsetsWithDup {
     public static void main(String[] args) {
-
+        SubsetsWithDup s = new SubsetsWithDup();
+        int[] nums = {1,2,2};
+        List<List<Integer>> ans = s.subsetsWithDup(nums);
+        for (List<Integer> list : ans) {
+            System.out.println(list);
+        }
     }
+
     public List<List<Integer>> a = new ArrayList<>();
 
     public void solve(List<Integer> ip, List<Integer> op){
