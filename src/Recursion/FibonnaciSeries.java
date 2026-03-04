@@ -1,6 +1,6 @@
 package Recursion;
 
-public class Fibonnaci {
+public class FibonnaciSeries {
 
     // https://leetcode.com/problems/fibonacci-number/description/
     public int fib(int n) {
