@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static Recursion.Generic.printArray;
+
 public class SubsetsWithDup {
     public static void main(String[] args) {
         SubsetsWithDup s = new SubsetsWithDup();
@@ -12,6 +14,8 @@ public class SubsetsWithDup {
         for (List<Integer> list : ans) {
             System.out.println(list);
         }
+
+        printArray(new Integer[]{1,2,3});
     }
 
     public List<List<Integer>> a = new ArrayList<>();
@@ -52,4 +56,22 @@ public class SubsetsWithDup {
         solve(ip, op);
         return a;
     }
+}
+
+class Generic<T> {
+    T val;
+
+    public Generic(T val) {
+        this.val = val;
+    }
+
+    ArrayList<T> array = new ArrayList<>();
+
+    public static<T> void printArray(T[] val) {
+        for (T element : val) {
+            System.out.print(" " + element);
+        }
+
+    }
+
 }
