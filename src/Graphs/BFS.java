@@ -35,4 +35,18 @@ public class BFS {
             }
         }
     }
+
+    // DFS is similar to BFS, but instead of using a queue, we use recursion to visit neighbors.
+    // Time Complexity: O(V + E) where V is the number of vertices and E is the number of edges in the graph.
+    // Space Complexity: O(V) for the visited array and O(V) for the recursion
+    public static void dfs(int node, List<List<Integer>> graph, boolean[] visited) {
+        visited[node] = true;
+        System.out.print(node + " ");
+
+        for(int neighbor : graph.get(node)) {
+            if(!visited[neighbor]) {
+                dfs(neighbor, graph, visited);
+            }
+        }
+    }
 }
