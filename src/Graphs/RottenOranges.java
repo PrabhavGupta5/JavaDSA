@@ -19,7 +19,7 @@ public class RottenOranges {
 
             int fresh = 0;
 
-            // STEP 1: initialize queue
+            // STEP 1: initialize queue with the position of all the rotten oranges and count the number of fresh oranges
             for(int i = 0; i < rows; i++){
                 for(int j = 0; j < cols; j++){
 
