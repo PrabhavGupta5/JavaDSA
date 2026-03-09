@@ -26,7 +26,7 @@ public class SurroundedRegions {
     }
 
     // Directions for DFS (down, up, right, left)
-    int[][] dirs = {{1,0},{-1,0},{0,1},{0,-1}};
+    // int[][] dirs = {{1,0},{-1,0},{0,1},{0,-1}};
 
     public static void solve(char[][] board) {
 
