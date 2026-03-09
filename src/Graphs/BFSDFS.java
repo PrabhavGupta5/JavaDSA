@@ -12,7 +12,7 @@ import java.util.Queue;
 // 6. Repeat until queue is empty
 // Time Complexity: O(V + E) where V is the number of vertices and E is the number of edges in the graph.
 // Space Complexity: O(V) for the visited array and O(V) for the queue in the worst case.
-public class BFS {
+public class BFSDFS {
 
     public static void bfs(int start, List<List<Integer>> graph, boolean[] visited) {
 
