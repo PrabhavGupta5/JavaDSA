@@ -43,6 +43,7 @@ public class NoOfCompleteComponents {
         nodes++; // count node
         noedges += graph.get(node).size(); // count edges connected to this node
 
+        // Move DFS
         for(int neighbor : graph.get(node)){
             if(!visited[neighbor]){
                 dfs(neighbor, graph, visited); // visit unvisited neighbors
