@@ -10,6 +10,7 @@ import java.util.List;
 // Time complexity: O(N + E) where N is the number of rooms and E is the number of keys (edges) in the graph
 // Space complexity: O(N) for the visited array and the recursion stack in the worst case
 
+// https://leetcode.com/problems/keys-and-rooms/description/
 public class KeysRooms {
     public boolean canVisitAllRooms(List<List<Integer>> rooms) {
         // here : room = node and key = edge
