@@ -73,4 +73,28 @@ public class LIS {
         return total;
 
     }
+
+    // Maximum length of pair chain
+    // https://leetcode.com/problems/maximum-length-of-pair-chain/description/
+    // This problem is similar to the longest increasing subsequence, but instead of comparing the elements of the array, we are comparing the pairs of the array, and we are checking if the first element of the current pair is greater than the second element of the previous pair, which means that we can extend the chain by 1, so we will update the dp[i] value to be the maximum of its current value and the value of dp[j] + 1, which means that we are extending the chain by 1 from the previous pair at index j.
+    public int findLongestChain(int[][] pairs) {
+        Arrays.sort(pairs, (a,b) -> a[0] -b[0]);
+
+        int n = pairs.length;
+        int[] dp = new int[n];
+        Arrays.fill(dp, 1);
+
+        int maxLen = 1;
+
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j < i; j++) {
+                // i is the current pair and j is the previous pair, same as longest increasing subsequence, we are comparing the current element with all the previous elements and updating the dp array based on the relation that if pairs[i][0] > pairs[j][1], then dp[i] = max(dp[i], dp[j] + 1), which means that if the first element of the current pair is greater than the second element of the previous pair, then we can extend the chain by 1, so we will update the dp[i] value to be the maximum of its current value and the value of dp[j] + 1, which means that we are extending the chain by 1 from the previous pair at index j.
+                if (pairs[i][0] > pairs[j][1]) { // if the first element of the current pair is greater than the second element of the previous pair, which means that we can extend the chain by 1, so we will update the dp[i] value to be the maximum of its current value and the value of dp[j] + 1, which means that we are extending the chain by 1 from the previous pair at index j.
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
+                }
+            }
+            maxLen = Math.max(maxLen, dp[i]);
+        }
+        return maxLen;
+    }
 }
