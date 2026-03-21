@@ -22,4 +22,22 @@ public class BestTimeToBuySellStock1 {
             return maxProfit;
         }
     }
+
+    // DP approach
+    // We can also solve this problem using DP, we can keep track of the minimum price we have seen so far and the maximum profit we can get by selling at the current price, and update the maximum profit accordingly.
+    // The idea is to iterate through the array of prices and keep track of the minimum price we have seen so far, and for each price, we calculate the profit we would get if we sold at that price (current price - minimum price), and update the maximum profit if the calculated profit is greater than the current maximum profit. This way, we can find the maximum profit in a single pass through the array.
+    // https://www.youtube.com/watch?v=excAOvwF_Wk&list=PLgUwDviBIf0pwFf-BnpkXxs0Ra0eU2sJY&index=17
+    public int maxProfit(int[] prices) {
+        // Use DP
+        int min = prices[0];
+        int maxProfit = 0;
+
+        for(int i = 1; i < prices.length; i++) {
+            if(prices[i] > min)
+                maxProfit = Math.max(maxProfit, prices[i] - min);
+            min = Math.min(min, prices[i]);
+        }
+
+        return maxProfit;
+    }
 }
