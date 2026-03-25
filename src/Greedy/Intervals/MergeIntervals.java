@@ -1,4 +1,4 @@
-package Intervals;
+package Greedy.Intervals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
