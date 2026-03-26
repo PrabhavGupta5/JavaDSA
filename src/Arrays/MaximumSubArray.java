@@ -5,6 +5,7 @@ public class MaximumSubArray {
     // Kadane’s algorithm dynamically decides whether to extend or restart a subarray based on whether the running sum is beneficial.”
     // https://leetcode.com/problems/maximum-subarray/
     // https://www.youtube.com/watch?v=GrNSGC8Z2T0&t=313s
+    // This is maximum slice algorithm
 
     class Solution {
         public int maxSubArray(int[] nums) {

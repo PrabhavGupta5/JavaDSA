@@ -19,7 +19,6 @@ public class TaskScheduler {
             maxFreq = Math.max(maxFreq, f);
         }
 
-
         int countMax = 0;
         for (int f : freq) {
             if (f == maxFreq) countMax++;
