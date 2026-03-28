@@ -1,6 +1,8 @@
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class CountNumbers {
     // count number of digits in a number
@@ -61,6 +63,8 @@ public class CountNumbers {
         int[] sort = {2,2,4,5,5,3,6};
 
         System.out.println(distinctSort(sort));
+
+        functional();
     }
 
     // Calculate the sum of two arrays sumA and sumB and swap the numbers in each and return true if the sum of both arrays is equal after swapping, otherwise return false
@@ -139,6 +143,19 @@ public class CountNumbers {
         }
         System.out.println("Using Sorting distinct elements in Array are: " + count);
         return count;
+    }
+
+    public static void functional() {
+        Function<Integer, Integer> half = a -> (a/2);
+        Function<Integer,Integer> sub=a->a-3;
+//        System.out.println(half.apply(10));
+//        System.out.println(half.andThen();
+//        System.out.println(half.compose());
+        Function<Integer,Integer> result =half.andThen(a->a+5).compose(sub);
+
+        System.out.println("-------------------");
+        Consumer<Integer> res = (newres) -> System.out.println(newres);
+        res.accept(result.apply(7));
     }
 
 }
