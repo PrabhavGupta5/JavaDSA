@@ -1,3 +1,5 @@
+import org.junit.Test;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -63,6 +65,11 @@ public class CountNumbers {
         int[] sort = {2,2,4,5,5,3,6};
 
         System.out.println(distinctSort(sort));
+
+        int min = Arrays.stream(sort).min().getAsInt(); // this is using Java 8 Stream API to find the minimum value in the array
+        System.out.println("Minimum value in the array is: " + min);
+        int max = Arrays.stream(sort).max().getAsInt(); // this is using Java 8 Stream API to find the maximum value in the array
+        System.out.println("Maximum value in the array is: " + max);
 
         functional();
     }
@@ -156,6 +163,13 @@ public class CountNumbers {
         System.out.println("-------------------");
         Consumer<Integer> res = (newres) -> System.out.println(newres);
         res.accept(result.apply(7));
+    }
+
+
+
+    @Test
+    public void probeTest() {
+
     }
 
 }
