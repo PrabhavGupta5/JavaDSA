@@ -25,11 +25,11 @@ public class KokoEatsBanana {
             return ans;
         }
 
-        public boolean totalHours(int[] piles, int h, int k) {
+        public boolean totalHours(int[] piles, int h, int mid) {
             long hours = 0;
             for (int p : piles) {
-                hours = hours + p / k;
-                if (p % k != 0)
+                hours = hours + p / mid;
+                if (p % mid != 0)
                     hours++;
             }
             return hours <= h;
@@ -37,7 +37,7 @@ public class KokoEatsBanana {
     }
 
 
-    //  This is same question as Find the Smallest Divisor Given a Threshold https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/description/
+    //  This is same question, Find the Smallest Divisor Given a Threshold https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/description/
     //  https://www.youtube.com/watch?v=UvBKTVaG6U8
     public int smallestDivisor(int[] nums, int threshold) {
         int low = 1;
@@ -71,5 +71,48 @@ public class KokoEatsBanana {
             return true;
 
         return false;
+    }
+
+
+
+
+    // This is also same
+    // https://leetcode.com/problems/minimized-maximum-of-products-distributed-to-any-store/description/
+    public int minimizedMaximum(int n, int[] quantities) {
+        int low = 1;
+        int high = 0;
+
+        for (int q : quantities) {
+            high = Math.max(high, q);
+        }
+
+        int ans = 0;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (canDistribute(quantities, mid, n)) {
+                ans = mid;
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        return ans;
+    }
+
+    public boolean canDistribute(int[] quantities, int maxPerStore, int n) {
+        // here mid = maxPerStore, we have to check if we can distribute the products in n stores with maxPerStore products in each store
+        int stores = 0;
+
+        for (int q : quantities) {
+            if(q % maxPerStore == 0)
+                stores += q / maxPerStore;
+            else
+                stores += q / maxPerStore + 1;
+        }
+
+        return stores <= n;
     }
 }
