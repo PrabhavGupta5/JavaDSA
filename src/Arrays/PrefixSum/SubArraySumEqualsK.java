@@ -18,6 +18,7 @@ public class SubArraySumEqualsK {
     // https://www.youtube.com/watch?v=N_AgTyMHgtw
     public int subArraySum(int[] nums, int k) {
         HashMap<Integer, Integer> map = new HashMap<>();
+        // map will store the prefix sum as key and its frequency as value
         int sum = 0;
         int res = 0;
 
@@ -30,10 +31,14 @@ public class SubArraySumEqualsK {
             res = res + map.getOrDefault(sum - k, 0);
 
             // put current sum in the map with the count
-            map.put(sum, map.getOrDefault(sum, 0) + 1);
+            //map.put(sum, map.getOrDefault(sum, 0) + 1);
+            // We can also use merge method to update the count of sum in the map
+            map.merge(sum, 1, Integer::sum);
         }
 
         return res;
 
     }
 }
+// why are we not maintaing prefix sum array and using it to calculate the sum of subarrays?
+// We can maintain a prefix sum array, but it would require O(n) space and O(n^2) time to calculate the sum of all subarrays, which is not efficient. By using a HashMap to store the frequency of prefix sums, we can calculate the sum of subarrays
