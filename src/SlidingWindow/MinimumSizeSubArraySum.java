@@ -12,7 +12,7 @@ public class MinimumSizeSubArraySum {
             curSum += nums[right];
 
             while(curSum >= target){
-                if(right - left + 1 < minLen)
+                if(right - left + 1 < minLen) // we are checking for minimum length of the window
                     minLen = right - left + 1 ;
                 curSum -= nums[left];
                 left ++;

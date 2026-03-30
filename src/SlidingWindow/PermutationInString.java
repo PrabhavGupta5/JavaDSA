@@ -2,6 +2,8 @@ package SlidingWindow;
 
 import java.util.Arrays;
 
+// https://leetcode.com/problems/permutation-in-string/description/
+
 public class PermutationInString {
     public boolean checkInclusion(String s1, String s2) {
         int[] s1Count = new int[26];

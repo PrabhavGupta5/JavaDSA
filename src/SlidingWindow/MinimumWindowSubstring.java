@@ -7,7 +7,7 @@ public class MinimumWindowSubstring {
     // https://leetcode.com/problems/minimum-window-substring/
     // https://www.youtube.com/watch?v=iwv1llyN6mo
     // This is the hardest problem of sliding window, try to understand why each step is happening
-    // its a shrinking window problem, increase i to decrease the window size
+    // this is a shrinking window problem, increase i to decrease the window size
     class Solution {
         public String minWindow(String s, String t) {
             HashMap<Character, Integer> map = new HashMap<>();

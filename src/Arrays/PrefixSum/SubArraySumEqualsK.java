@@ -39,6 +39,30 @@ public class SubArraySumEqualsK {
         return res;
 
     }
+
+    // We also have one variant of this problem where we need to return the longest subarray, in this case we will store the index(first seen) of the prefix sum in the HashMap instead of its frequency, and we will update the max length whenever we find a valid subarray.
+    // can we not do it in O(n) time complexity using the same approach of prefix sum and HashMap?
+    public int longestSubArraySum(int[] nums, int k) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int sum = 0;
+        int maxLength = 0;
+
+        map.put(0, -1); // base condition for sum = 0 and its index as -1
+
+        for(int i = 0; i < nums.length; i++) {
+            sum = sum + nums[i];
+
+            if(map.containsKey(sum - k)) {
+                maxLength = Math.max(maxLength, i - map.get(sum - k));
+            }
+
+            // Only put the current sum in the map if it is not already present to maintain the longest length
+            map.putIfAbsent(sum, i);
+        }
+
+        return maxLength;
+    }
+
 }
 // why are we not maintaing prefix sum array and using it to calculate the sum of subarrays?
 // We can maintain a prefix sum array, but it would require O(n) space and O(n^2) time to calculate the sum of all subarrays, which is not efficient. By using a HashMap to store the frequency of prefix sums, we can calculate the sum of subarrays

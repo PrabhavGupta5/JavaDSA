@@ -2,10 +2,11 @@ package SlidingWindow;
 
 import java.util.HashMap;
 
+// https://leetcode.com/problems/fruit-into-baskets/
+
 public class FruitsIntoBasket {
-    // https://leetcode.com/problems/fruit-into-baskets/
     class Solution {
-        // Return max continuous subarray that contains at most two distinct elements, digits(fruits)
+        // Return max continuous subArray that contains at most two distinct elements, digits(fruits)
         public int totalFruit(int[] fruits) {
             HashMap<Integer, Integer> map = new HashMap<>();
             int left = 0;
