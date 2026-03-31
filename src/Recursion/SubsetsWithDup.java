@@ -1,10 +1,8 @@
 package Recursion;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
-import static Recursion.Generic.printArray;
+//import static Recursion.Generic.printArray;
 
 public class SubsetsWithDup {
     public static void main(String[] args) {
@@ -15,63 +13,50 @@ public class SubsetsWithDup {
             System.out.println(list);
         }
 
-        printArray(new Integer[]{1,2,3});
-    }
-
-    public List<List<Integer>> a = new ArrayList<>();
-
-    public void solve(List<Integer> ip, List<Integer> op){
-        if(ip.isEmpty()) {
-            a.add(op);
-            return;
-        }
-        // Adding first element to op2
-        List<Integer> op2 = new ArrayList<>(op);
-        op2.add(ip.get(0));
-        ArrayList<Integer> ip1 = new ArrayList<>(ip);
-        ip1.remove(0);
-        solve(ip1,op2);
-
-        // Choice 2: Exclude first element AND all its duplicates
-        int firstElement = ip.get(0);
-        ArrayList<Integer> ip2 = new ArrayList<>(ip);
-        ip2.remove(0);
-
-        while(!ip2.isEmpty() && ip2.get(0) == ip.get(0)){
-            ip2.remove(0);
-        }
-
-        List<Integer> op1 = new ArrayList<>(op);
-        solve(ip2,op1);
-
+        //printArray(new Integer[]{1,2,3});
     }
 
     public List<List<Integer>> subsetsWithDup(int[] nums) {
-        Arrays.sort(nums);
-        List<Integer> ip = new ArrayList<>();
-        for (int i : nums) {
-            ip.add(i);
-        }
+        Set<List<Integer>> set = new HashSet<>();
         List<Integer> op = new ArrayList<>();
-        solve(ip, op);
-        return a;
-    }
-}
-
-class Generic<T> {
-    T val;
-
-    public Generic(T val) {
-        this.val = val;
+        Arrays.sort(nums);
+        solve(nums,op,set);
+        return new ArrayList<>(set);
     }
 
-    ArrayList<T> array = new ArrayList<>();
-
-    public static<T> void printArray(T[] val) {
-        for (T element : val) {
-            System.out.print(" " + element);
+    public void solve(int[] nums, List<Integer>op, Set<List<Integer>> set) {
+        if(nums.length == 0) {
+            set.add(new ArrayList<>(op));
+            return;
         }
 
-    }
+        ArrayList<Integer> op1 = new ArrayList<>(op);
+        ArrayList<Integer> op2 = new ArrayList<>(op);
 
+        op2.add(nums[0]);
+        // better way
+        nums = Arrays.copyOfRange(nums, 1, nums.length); // remove first element from input array
+
+        solve(nums,op1,set);
+        solve(nums,op2,set);
+
+    }
 }
+
+//class Generic<T> {
+//    T val;
+//
+//    public Generic(T val) {
+//        this.val = val;
+//    }
+//
+//    ArrayList<T> array = new ArrayList<>();
+//
+//    public static<T> void printArray(T[] val) {
+//        for (T element : val) {
+//            System.out.print(" " + element);
+//        }
+//
+//    }
+//
+//}
