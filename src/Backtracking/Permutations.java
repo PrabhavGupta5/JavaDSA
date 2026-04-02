@@ -35,18 +35,24 @@ public class Permutations {
     }
     // Input: nums = [1,2,3]
     // Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
-}
 
-class PermuationsII {
+
+
+
+
+
+
+    // Permutations II, where we only have to print unique ones
+
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
-        Arrays.sort(nums);
+        Arrays.sort(nums); // for duplicates, it is a must
         boolean[] usedFlag = new boolean[nums.length];
-        backtrack(nums, result, new ArrayList<>(), usedFlag);
+        backtrack2(nums, result, new ArrayList<>(), usedFlag);
         return result;
     }
 
-    public void backtrack(int[] nums, List<List<Integer>> result, List<Integer> current, boolean[] usedFlag) {
+    public void backtrack2(int[] nums, List<List<Integer>> result, List<Integer> current, boolean[] usedFlag) {
         if(current.size() == nums.length && !result.contains(current)) {
             result.add(new ArrayList<>(current));
             return;
@@ -57,7 +63,6 @@ class PermuationsII {
             // if the usedFlag is true, skip that character
             if(usedFlag[i])
                 continue;
-
             if(i > 0 && nums[i] == nums[i - 1] && !usedFlag[i - 1])      // this line is memory efficient, as it is stopping to generate duplicate permutations
                 continue;
 
@@ -66,7 +71,7 @@ class PermuationsII {
             current.add(nums[i]);
 
             // explore
-            backtrack(nums, result, current, usedFlag);
+            backtrack2(nums, result, current, usedFlag);
 
             // remove
             usedFlag[i] = false; // It can be used at later point
@@ -74,7 +79,6 @@ class PermuationsII {
         }
     }
 }
-
 
 
 
