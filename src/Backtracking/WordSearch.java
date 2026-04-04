@@ -33,7 +33,6 @@ public class WordSearch {
         visited[i][j] = false; // backtrack
 //        board[i][j] = temp;
         return isValid;
-
     }
 
     // we can also solve this without visited array, with just temp variable
