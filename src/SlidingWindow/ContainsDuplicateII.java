@@ -14,7 +14,7 @@ public class ContainsDuplicateII {
 
                 window.add(nums[i]);
 
-                if(window.size() > k)
+                if(window.size() > k) // Maintain the size of the window to be k, if it exceeds remove the leftmost element
                     window.remove(nums[i-k]);
 
             }

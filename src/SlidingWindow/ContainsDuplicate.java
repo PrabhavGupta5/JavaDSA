@@ -7,13 +7,13 @@ import java.util.HashSet;
 public class ContainsDuplicate {
     class Solution {
         public boolean containsDuplicate(int[] nums) {
-            HashSet<Integer> window = new HashSet<>();
+            HashSet<Integer> set = new HashSet<>();
 
-            for(int i = 0; i < nums.length; i++) {
-                if(window.contains(nums[i]))
+            for (int num : nums) {
+                if (set.contains(num))
                     return true;
 
-                window.add(nums[i]);
+                set.add(num);
 
             }
             return false;
