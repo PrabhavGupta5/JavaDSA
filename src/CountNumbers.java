@@ -2,6 +2,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -40,6 +41,12 @@ public class CountNumbers {
         System.out.println("Array in reverse order: ");
         for(int i = arr.length - 1; i >= 0; i--) {
             System.out.print(arr[i] + " ");
+        }
+
+        List<Integer> list = List.of(1,2,3);
+
+        for(int i:list){
+            list.remove(i); // this will throw exception, you can't do this
         }
 
         // There's 1 to n integers, print the sum of all the integers
