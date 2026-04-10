@@ -14,12 +14,15 @@ public class SubTree {
             this.right = right;
         }
     }
+
     class Solution {
         public boolean isSubtree(TreeNode s, TreeNode subtree) {
-            if (s == null) return false;
-            if (isSame(s, subtree)) return true;
+            if (s == null)
+                return false;
+            if (isSame(s, subtree))
+                return true;
             // This recursion call is to check for every child node if the root does not match with subtree
-            return isSubtree(s.left, subtree) || isSubtree(s.right, subtree);
+            return isSubtree(s.left, subtree) || isSubtree(s.right, subtree); // ether in left or right subtree
         }
 
         private boolean isSame(TreeNode s, TreeNode subtree) {

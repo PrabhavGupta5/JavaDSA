@@ -1,8 +1,11 @@
 package Tree;
 
-// In this question we will first calculate the height of Binary tree with some checks thats all
+// In this question we will first calculate the height of Binary tree with some checks that's all
 // https://leetcode.com/problems/balanced-binary-tree/
 // https://www.youtube.com/watch?v=Yt50Jfbd8Po
+
+// This solution runs in O(n) time since each node is visited once using post-order traversal.
+// The height and balance check are combined in a single pass, avoiding redundant computations seen in the naive O(n²) approach.”
 public class BalancedBinaryTree {
 
     public static class TreeNode {
