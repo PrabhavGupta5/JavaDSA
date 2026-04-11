@@ -24,17 +24,20 @@ public class DFS {
 
     static class ValidBST {
         public boolean isValidBST(TreeNode root) {
-            return helper(root, Long.MIN_VALUE, Long.MAX_VALUE);
+            return dfs(root, Long.MIN_VALUE, Long.MAX_VALUE);
         }
+        // here we are taking long because of bigger range
 
-        public boolean helper(TreeNode node, long min,long max){
-            if(node == null)
-                return true;
+        public boolean dfs(TreeNode root, long min, long max) {
+            if (root == null) return true;
 
-            if(node.val <= min || node.val >= max)
+            if(root.val <= min || root.val >= max)
                 return false;
 
-            return helper(node.left, min, node.val) && helper(node.right, node.val, max);
+            boolean left = dfs(root.left, min, root.val); // for left the max we can have value is that root.val, thats why
+            boolean right = dfs(root.right, root.val, max);
+
+            return left && right;
         }
     }
 
@@ -128,39 +131,6 @@ public class DFS {
         }
     }
 
-    // We call: goodNodes(root) → which calls dfs(3, 3)
-    //Step-by-step:
-    //dfs(3, 3):
-    //Is 3 ≥ 3? ✅ Yes → good = 1
-    //maxSoFar stays 3
-    //Recurse:
-    //dfs(1, 3)
-    //dfs(4, 3)
-    //dfs(1, 3):
-    //Is 1 ≥ 3? ❌ No → good = 0
-    //maxSoFar remains 3
-    //Children are null → both return 0
-    //So this returns: 0
-    //dfs(4, 3):
-    //Is 4 ≥ 3? ✅ Yes → good = 1
-    //maxSoFar becomes 4
-    //Recurse: dfs(5, 4)
-    //dfs(5, 4):
-    //Is 5 ≥ 4? ✅ Yes → good = 1
-    //maxSoFar becomes 5
-    //Children are null → return 0
-    //Returns: 1
-    //So:
-    //dfs(5) returns 1
-    //dfs(4) = 1 (itself) + 1 (left) = 2
-    //dfs(1) = 0
-    //dfs(3) = 1 (itself) + 0 (left) + 2 (right) = 3
-    //🔚 Final Return Value = 3 Good Nodes
-    //Which are:
-    //3 (root)
-    //4 (right)
-    //5 (left of right)
-
     /*
 Tree:
       3
@@ -182,24 +152,26 @@ Good Nodes = 3 → [3, 4, 5]
 
     // https://leetcode.com/problems/count-good-nodes-in-binary-tree/
 
-    static class CountGoodNodes {
+    class Solution {
         public int goodNodes(TreeNode root) {
-            return helper(root, root.val);
+            // have to track the maximum so far with DFS
+            return dfs(root, Integer.MIN_VALUE);
         }
 
-        public int helper(TreeNode root, int maxSoFar) {
+        public int dfs(TreeNode root, int maxSoFar) {
             if(root == null)
                 return 0;
-            int good = 0;
-            if(root.val >= maxSoFar)
-                good = 1;
-            maxSoFar = Math.max(maxSoFar, root.val);
+            int count = 0;
 
-            good = good + helper(root.left, maxSoFar);
-            good = good + helper(root.right, maxSoFar);
+            if(root.val >= maxSoFar) {
+                maxSoFar = root.val;
+                count++;
+            }
 
-            return good;
+            count = count + dfs(root.left, maxSoFar);
+            count = count + dfs(root.right, maxSoFar);
 
+            return count;
         }
     }
 
