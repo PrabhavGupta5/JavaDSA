@@ -118,14 +118,11 @@ public class BFS {
         public Node left;
         public Node right;
         public Node next;
-
         public Node() {
         }
-
         public Node(int _val) {
             val = _val;
         }
-
         public Node(int _val, Node _left, Node _right, Node _next) {
             val = _val;
             left = _left;
@@ -136,25 +133,22 @@ public class BFS {
         // https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
         static class connectBST {
             public Node connect(Node root) {
-                if (root == null) return null;
-                Node leftMost = root;
-
-                while (leftMost.left != null) {
-                    Node current = leftMost;
-                    while (current != null) {
-                        current.left.next = current.right;
-                        if (current.next != null)
-                            current.right.next = current.next.left;
-                        current = current.next;
-                    }
-                    leftMost = leftMost.left;
+                if(root == null)
+                    return null;
+                if(root.left != null) {
+                    root.left.next = root.right;  // Across same parent
+                    if(root.next != null)
+                        root.right.next = root.next.left; // Across different parent
                 }
+                connect(root.left);
+                connect(root.right);
                 return root;
             }
         }
     }
 
     // https://leetcode.com/problems/binary-tree-right-side-view/
+    // It is BFS traversal with only returning right side i.e. levelSize - 1 nodes
     static class rightView {
         public List<Integer> rightSideView(TreeNode root) {
             List<Integer> result = new ArrayList<>();
