@@ -73,20 +73,23 @@ public class DFS {
     static class KthSmallest {
         int count = 0;
         public int kthSmallest(TreeNode root, int k) {
-            return helper(root, k).val;
+            // We will be using inorder traversal as in that we store in sorted fashion
+            return inorder(root, k);
         }
+        public int inorder(TreeNode root, int k) {
+            if(root == null) return -1;
 
-        public TreeNode helper(TreeNode root, int k) {
-            if (root == null)
-                return null;
-            TreeNode left = helper(root.left, k);
-            if (left != null)
-                return left;   // if the kth smallest element has been found in the left subtree, return it immediately.
+            // inorder, left root right
+            int left = inorder(root.left, k);
+            if(left != -1)
+                return left;
+
             count++;
             if(count == k)
-                return root;
+                return root.val;
 
-            return helper(root.right, k);
+            int right = inorder(root.right,k);
+            return right;
         }
     }
 
