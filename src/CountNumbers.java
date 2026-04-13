@@ -172,6 +172,16 @@ public class CountNumbers {
         res.accept(result.apply(7));
     }
 
+    // check the given number is a power of 2
+    // A power of 2 number only has ONE bit set.
+    //8  = 1000
+    //7  = 0111
+    //------------
+    //&  = 0000
+    public boolean checkPower(int n ) {
+        return n > 0 && ((n & (n-1)) == 0);
+    }
+
 
 
     @Test
