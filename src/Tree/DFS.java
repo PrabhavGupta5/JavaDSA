@@ -105,6 +105,11 @@ public class DFS {
     //This way, preorderIndex always points to the next node to process, moving from leftmost subtree roots to rightmost subtree roots.
 
     // https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/submissions/
+    // We are splitting inorder array into two parts
+    // “We use inorder to determine subtree boundaries.
+    //Elements left of root form the left subtree,
+    //elements right form the right subtree.
+    //So we recursively build using those index ranges.”
     static class Construct {
         private Map<Integer, Integer> inorderMap;
         private int preorderIndex;
@@ -115,20 +120,20 @@ public class DFS {
                 inorderMap.put(inorder[i], i);
             }
             preorderIndex = 0;
-            return helper(preorder, 0, inorder.length - 1);
+            return dfs(preorder, 0, inorder.length - 1);
         }
 
-        private TreeNode helper(int[] preorder, int inorderStart, int inorderEnd) {
-            if (inorderStart > inorderEnd) {
+        private TreeNode dfs(int[] preorder, int inorderStart, int inorderEnd) {
+            if (inorderStart > inorderEnd)
                 return null;
-            }
+
             int rootVal = preorder[preorderIndex++];
             TreeNode root = new TreeNode(rootVal);
 
             int inorderRootIndex = inorderMap.get(rootVal);
 
-            root.left = helper(preorder, inorderStart, inorderRootIndex - 1);
-            root.right = helper(preorder, inorderRootIndex + 1, inorderEnd);
+            root.left = dfs(preorder, inorderStart, inorderRootIndex - 1);
+            root.right = dfs(preorder, inorderRootIndex + 1, inorderEnd);
 
             return root;
         }
