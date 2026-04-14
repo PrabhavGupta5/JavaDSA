@@ -224,20 +224,64 @@ Good Nodes = 3 → [3, 4, 5]
 
 
     // https://leetcode.com/problems/path-sum/
+    // We are reducing the target sum and see if it any time it is equal to root.val
     static class PathSum {
-        public boolean hasPathSum(TreeNode root, int sum) {
+        public boolean hasPathSum(TreeNode root, int target) {
             if(root == null)
                 return false;
-            boolean left = hasPathSum(root.left, sum - root.val);
-            boolean right = hasPathSum(root.right, sum - root.val);
+            boolean left = hasPathSum(root.left, target - root.val);
+            boolean right = hasPathSum(root.right, target - root.val);
 
-            if(root.val == sum && root.left == null && root.right == null)
+            if(root.val == target && root.left == null && root.right == null)
                 return true;
 
             return left || right;
         }
     }
-    
+
+
+    // Maximum Path Sum
+    // https://leetcode.com/problems/binary-tree-maximum-path-sum/
+    int maxSum = Integer.MIN_VALUE;
+    public int maxPathSum(TreeNode root) {
+        dfs(root);
+        return maxSum;
+    }
+
+    public int dfs(TreeNode root) {
+        // return the maximum sum in a node
+        if(root == null)
+            return 0;
+
+        int leftSum = Math.max(0, dfs(root.left));
+        int rightSum = Math.max(0, dfs(root.right));
+        int currentSum = root.val + leftSum + rightSum;
+        maxSum = Math.max(currentSum, maxSum);
+
+        return root.val + Math.max(leftSum, rightSum);
+    }
+
+
+    // // At each node:
+    //	1.	Recursively process left & right
+    //	2.	Update children after deletion
+    //	3.	Check:
+    //	•	If current node is now a leaf
+    //	•	AND value == target → delete it
+
+    // Remove leaf nodes from Binary tree equal to target
+    public TreeNode removeLeafNodes(TreeNode root, int target) {
+        if(root == null) return null;
+
+        root.left = removeLeafNodes(root.left, target);
+        root.right = removeLeafNodes(root.right, target);
+
+        // PostOrder because after deleting children then we will process root.val
+        if(root.left == null && root.right == null && root.val == target)
+            return null;
+
+        return root;
+    }
 
 
 
