@@ -1,11 +1,9 @@
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class CountNumbers {
     // count number of digits in a number
@@ -45,9 +43,9 @@ public class CountNumbers {
 
         List<Integer> list = List.of(1,2,3);
 
-        for(int i:list){
-            list.remove(i); // this will throw exception, you can't do this
-        }
+//        for(int i:list){
+//            list.remove(i); // this will throw exception, you can't do this
+//        }
 
         // There's 1 to n integers, print the sum of all the integers
         // n = 5 -> 1 + 2 + 3 + 4 + 5 = 15
@@ -69,7 +67,7 @@ public class CountNumbers {
         int[] res = swapSum2(a,b);
         System.out.println("pair of swap sum : " + Arrays.toString(res));
 
-        int[] sort = {2,2,4,5,5,3,6};
+        int[] sort = {2,2,4,5,5,5,3,6};
 
         System.out.println(distinctSort(sort));
 
@@ -78,6 +76,19 @@ public class CountNumbers {
         int max = Arrays.stream(sort).max().getAsInt(); // this is using Java 8 Stream API to find the maximum value in the array
         System.out.println("Maximum value in the array is: " + max);
 
+        List<String> list2 = new ArrayList<>();
+        list2.add("Ananana");
+        list2.add("babananana");
+        list2.add("Ava");
+        list2.add("Ataf");
+
+
+        Map<Character, List<String>> map = filterByStartStreams(list2);
+        System.out.println("Strings that start with same character are : " + map);
+
+
+        List<Integer> resulttt = dupArray(sort);
+        System.out.println("Duplicates from this array are : " + resulttt);
         functional();
     }
 
@@ -182,6 +193,37 @@ public class CountNumbers {
         return n > 0 && ((n & (n-1)) == 0);
     }
 
+    // Return a list of duplicate elements present in array
+    public static List<Integer> dupArray(int[] nums) {
+        // return duplicate items from the array in a list
+        // int[] arr = {2,2,4,5,5,3,6};
+        HashSet<Integer> seenSet = new HashSet<>();
+        HashSet<Integer> list = new HashSet<>();
+        for(int num : nums) {
+            if(seenSet.contains(num))
+                list.add(num);
+            else
+                seenSet.add(num);
+        }
+        return new ArrayList<>(list);
+
+    }
+
+    // return a list of strings that start with same character
+    public static List<String> filterByStart(List<String> list, char ch) {
+        List<String> res = new ArrayList<>();
+        for(String s : list) {
+            if(s.charAt(0) == ch)
+                res.add(s);
+        }
+        return res;
+    }
+
+    // return a list of strings that start with same character with Streams
+    public static  Map<Character, List<String>>  filterByStartStreams(List<String> list) {
+        return list.stream()
+                .collect(Collectors.groupingBy(str -> str.charAt(0)));
+    }
 
 
     @Test
