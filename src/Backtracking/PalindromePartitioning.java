@@ -14,7 +14,7 @@ public class PalindromePartitioning {
 
     // Pick a valid substring → move start forward → repeat → store when string is fully consumed
     public void backtrack(String s, List<List<String>> result,  List<String> current, int start){
-        if(start == s.length()) { // We used the whole string, its a valid partition
+        if(start == s.length()) { // We used the whole string, it's a valid partition
             result.add(new ArrayList<String>(current));
             return;
         }
