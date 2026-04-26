@@ -23,4 +23,22 @@ public class LinkedListCycle {
         }
         return null;
     }
+
+
+    // Basic Cycle detection
+    // https://leetcode.com/problems/linked-list-cycle/description/
+    public boolean hasCycle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while(fast != null && fast.next != null) {
+            slow = head.next;
+            fast = head.next.next;
+
+            if(fast == slow)
+                return true;
+        }
+
+        return false;
+    }
 }
