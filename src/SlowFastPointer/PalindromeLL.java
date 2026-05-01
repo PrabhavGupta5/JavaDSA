@@ -36,6 +36,8 @@ public class PalindromeLL {
 //     }
 // }
 
+
+// In this we are reversing second half and then checking with the first half if they are same or not..
     public boolean isPalindrome(ListNode head) {
         ListNode slow = head, fast = head;
 

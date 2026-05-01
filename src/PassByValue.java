@@ -25,11 +25,16 @@ public class PassByValue {
         Map<Integer,Integer> map2=new HashMap<>();
 
             map2.put(3,7);
+            map2.put(6,2);
         map2.compute(3,(k,v)-> v+1);
         for (int val : map2.values())
             System.out.println("val in map2 " + val);
         for (int key : map2.keySet()) {
             System.out.println("Key in map2: " + key);
+        }
+
+        for(Map.Entry<Integer, Integer> k : map2.entrySet()) {
+            System.out.println(k.getKey() + " : " + k.getValue());
         }
 
         for(int key : map2.keySet())
