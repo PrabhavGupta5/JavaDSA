@@ -1,4 +1,4 @@
-package SlowFastPointer;
+package LinkedList;
 
 // https://leetcode.com/problems/swap-nodes-in-pairs/description/
 // Input: head = [1,2,3,4]

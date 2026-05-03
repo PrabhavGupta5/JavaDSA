@@ -1,4 +1,4 @@
-package SlowFastPointer;
+package LinkedList;
 
 import java.util.HashSet;
 

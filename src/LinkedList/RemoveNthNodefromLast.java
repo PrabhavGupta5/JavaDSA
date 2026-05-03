@@ -1,4 +1,4 @@
-package SlowFastPointer;
+package LinkedList;
 
 public class RemoveNthNodefromLast {
     public ListNode removeNthFromEnd(ListNode head, int n) {

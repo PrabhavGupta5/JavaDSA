@@ -1,4 +1,4 @@
-package SlowFastPointer;
+package LinkedList;
 
 // https://leetcode.com/problems/remove-linked-list-elements/description/
 public class RemoveValNodesInLL {

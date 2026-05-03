@@ -1,4 +1,4 @@
-package SlowFastPointer;
+package LinkedList;
 
 
 // https://leetcode.com/problems/linked-list-cycle-ii/description/

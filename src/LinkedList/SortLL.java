@@ -1,4 +1,4 @@
-package SlowFastPointer;
+package LinkedList;
 
 public class SortLL {
     public ListNode sortList(ListNode head) {

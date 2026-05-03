@@ -1,4 +1,4 @@
-package SlowFastPointer;
+package LinkedList;
 
 // https://leetcode.com/problems/remove-nodes-from-linked-list/description/
 // We have reversed the linked list than looking for maximum value seen so far, if the next is smaller than the current one, skip that node

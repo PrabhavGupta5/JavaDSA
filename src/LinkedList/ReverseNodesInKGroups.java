@@ -1,4 +1,4 @@
-package SlowFastPointer;
+package LinkedList;
 
 // https://leetcode.com/problems/reverse-nodes-in-k-group/
 // https://www.youtube.com/watch?v=lIar1skcQYI&t=1112s Must watch for this hard problem

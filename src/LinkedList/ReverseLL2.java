@@ -1,4 +1,4 @@
-package SlowFastPointer;
+package LinkedList;
 
 public class ReverseLL2 {
 /**

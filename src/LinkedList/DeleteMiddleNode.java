@@ -1,4 +1,4 @@
-package SlowFastPointer;
+package LinkedList;
 
 public class DeleteMiddleNode {
     public ListNode deleteMiddle(ListNode head) {

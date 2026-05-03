@@ -1,4 +1,4 @@
-package SlowFastPointer;
+package LinkedList;
 
 public class RemoveDuplicatesFromLLVariations {
     // Simple delete duplicates in sorted LL, keep one element of duplicate

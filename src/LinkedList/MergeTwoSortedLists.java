@@ -1,4 +1,4 @@
-package SlowFastPointer;
+package LinkedList;
 
 
 // https://leetcode.com/problems/merge-two-sorted-lists/
