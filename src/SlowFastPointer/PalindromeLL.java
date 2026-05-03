@@ -45,10 +45,9 @@ public class PalindromeLL {
             slow = slow.next;
             fast = fast.next.next;
         }
-        ListNode newHead = reverse(slow);
 
         ListNode first = head;
-        ListNode second = newHead;
+        ListNode second = reverse(slow);
 
         while(second != null) {
             if(first.val != second.val)
@@ -64,10 +63,10 @@ public class PalindromeLL {
     private ListNode reverse(ListNode head) {
         ListNode prev = null, curr = head;
         while (curr != null) {
-            ListNode nextTemp = curr.next;
+            ListNode next = curr.next;
             curr.next = prev;
             prev = curr;
-            curr = nextTemp;
+            curr = next;
         }
         return prev;
     }
