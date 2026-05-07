@@ -2,8 +2,7 @@ package LinkedList;
 
 
 // https://leetcode.com/problems/add-two-numbers/
-
-// https://www.youtube.com/watch?v=XmRrGzR6udg
+// https://www.youtube.com/watch?v=KMS0WFxrsT8
 public class AddTwoLL {
 
 /**
@@ -16,32 +15,31 @@ public class AddTwoLL {
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode dummy = new ListNode(-1);
-        ListNode cur = dummy;
-        ListNode t1 = l1, t2 = l2;
+public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    ListNode dummy = new ListNode(-1);
+    ListNode cur = dummy;
 
-        int carry = 0;
+    int carry = 0;
 
-        while(t1 != null || t2 != null || carry != 0) {
-            int sum = 0;
-            if(t1 != null) {
-                sum = sum + t1.val;
-                t1 = t1.next;
-            }
-            if(t2 != null) {
-                sum = sum + t2.val;
-                t2 = t2.next;
-            }
-            sum = sum + carry;
-            ListNode newNode = new ListNode(sum % 10);
-            carry = sum / 10;
-            cur.next = newNode;
-            cur = cur.next;
-
+    while(l1 != null || l2 != null) {
+        int sum = 0 + carry;
+        if(l1 != null) {
+            sum = sum + l1.val;
+            l1 = l1.next;
         }
-
-        return dummy.next;
-
+        if(l2 != null) {
+            sum = sum + l2.val;
+            l2 = l2.next;
+        }
+        carry = sum / 10;
+        sum = sum % 10;
+        cur.next = new ListNode(sum);
+        cur = cur.next;
     }
+    if(carry == 1)
+        cur.next = new ListNode(1);
+
+    return dummy.next;
+
+}
 }
