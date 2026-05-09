@@ -19,6 +19,9 @@ public class ReorderList {
         ListNode first = head;
         // we need to merge them now :
 
+        // for example: first  = 1 → 2 → 3
+        //              second = 9 → 8 → 7
+        // op :                  1 → 9 → 2 → 8 → 3 → 7
         while (second != null) {
             ListNode temp1 = first.next;
             ListNode temp2 = second.next;

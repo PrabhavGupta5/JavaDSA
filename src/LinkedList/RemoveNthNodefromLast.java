@@ -1,5 +1,9 @@
 package LinkedList;
 
+// https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/
+// The approach is to use two pointers, one pointer is n steps ahead of the other pointer, then we move both pointers one step at a time until the second pointer reaches the end of the list, at that point the first pointer will be at the node just before the node we want to remove, then we can simply change the next pointer of the first pointer to skip the node we want to remove.
+// Time Complexity: O(n) where n is the number of nodes in the linked list
+// Space Complexity: O(1) we are not using any extra space
 public class RemoveNthNodefromLast {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         if(head == null) return null;
