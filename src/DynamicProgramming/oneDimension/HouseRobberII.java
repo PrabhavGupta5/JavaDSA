@@ -32,4 +32,34 @@ public class HouseRobberII {
 
         return Math.max(loot1[n-2], loot2[n-1]);
     }
+
+
+
+    // use this one if you want to solve the problem in one pass, we can use two arrays to store the maximum amount of money that can be robbed at each house when we skip the last house and when we skip the first house, and then we can fill both arrays in one pass and return the maximum of the last elements of both arrays, which will give us the maximum amount of money that can be robbed when we consider both cases of skipping the first house and skipping the last house.
+    public int rob2(int[] nums) {
+        int n = nums.length;
+        if(n == 1)
+            return nums[0];
+        if(n == 2) return Math.max(nums[0], nums[1]);
+
+        // skip the last house
+        int[] loot1 = new int[n];
+        loot1[0] = nums[0];
+        loot1[1] = Math.max(nums[0], nums[1]);
+        int[] loot2 = new int[n];
+        loot2[0]=0;
+        loot2[1] = nums[1];
+        loot2[2] = Math.max(nums[1], nums[2]);
+
+        for(int i = 2; i < n; i++){
+            if(i<n-1){
+                loot1[i] = Math.max(nums[i] + loot1[i-2] , loot1[i-1]);
+            }
+            if(i>=3){
+                loot2[i] = Math.max(nums[i] + loot2[i-2] , loot2[i-1]);
+            }
+        }
+        return Math.max(loot1[n-2], loot2[n-1]);
+
+    }
 }
