@@ -10,7 +10,7 @@ public class MinNoOfOperations {
             int n = word2.length();
             int[][] t = new int[m+1][n+1];
             // To reverse a String
-            // String s2 = new StringBuilder(word1).reverse().toString();
+            //  s2 = new StringBuilder(word1).reverse().toString();
 
             for(int i=0; i<m+1; i++)
                 t[i][0] = 0;

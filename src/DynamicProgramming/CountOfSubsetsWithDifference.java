@@ -30,6 +30,11 @@ public class CountOfSubsetsWithDifference {
 
     int countWithGivenSum(int[] arr, int n, int diff) {
         int sumArr = 0;
+        if(diff > sumArr)
+            return 0;
+        if((diff + sumArr) % 2 != 0)
+            return 0;
+
         for (int i = 0; i < n; i++)
             sumArr += arr[i];
 

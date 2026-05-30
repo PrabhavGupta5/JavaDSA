@@ -17,10 +17,13 @@ public class LongestPalindromicSubstring {
         if(t[i][j] != -1) // if the value in the memoization table is not -1, then it means that we have already calculated the result for this substring, so we can return the result from the memoization table instead of calculating it again, which improves the time complexity of the algorithm.
             return t[i][j] == 1; // we are returning true if the value in the memoization table is 1, and false if it is 0, because we are storing the results of the palindrome checks as 1 for true and 0 for false in the memoization table.
 
-        if(s.charAt(i) == s.charAt(j))    {
-            boolean res = solve(s,i+1,j-1);
-            t[i][j] = res ? 1 : 0;
-            return res;
+        if(s.charAt(i) == s.charAt(j)) {
+            if(solve(s, i + 1, j - 1)) {
+                t[i][j] = 1;
+                return true;
+            }
+            t[i][j] = 0;
+            return false;
         }
 
         return t[i][j] == 0;
@@ -35,7 +38,7 @@ public class LongestPalindromicSubstring {
         int sp=0;
 
         for(int i = 0; i<n; i++) {
-            for(int j=i ; j<n; j++){
+            for(int j = i ; j<n; j++){
                 if(solve(s, i, j)){
                     if(j-i+1 > maxLen) {
                         maxLen = j-i+1;

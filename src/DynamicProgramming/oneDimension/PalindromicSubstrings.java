@@ -10,6 +10,7 @@ import java.util.Arrays;
 public class PalindromicSubstrings {
     int[][] t = new int[1001][1001];
 
+    // this function is used to check if the substring from index i to index j is a palindrome or not, and we are using memoization to store the results of the palindrome checks for all possible substrings of the input string, so that we can avoid redundant calculations and improve the time complexity of the algorithm.
     public boolean solve(String s, int i, int j){
         if(i>=j)  return true;
 

@@ -36,4 +36,8 @@ public class ProductArrayExceptSelf {
 
         return result;
     }
+    // example: nums = [1, 2, 3, 4]
+    // prefix = [1, 1, 2, 6] (product of elements to the left)
+    // suffix = [24, 12, 4, 1] (product of elements to the right)
+    // result = [24, 12, 8, 6] (product of prefix and suffix)
 }
