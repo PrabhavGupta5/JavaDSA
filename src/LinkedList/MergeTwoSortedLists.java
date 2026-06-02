@@ -17,7 +17,7 @@ public class MergeTwoSortedLists {
      * }
      */
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode dummy = new ListNode();
+        ListNode dummy = new ListNode(-1);
         ListNode curr = dummy;
 
         while (list1 != null && list2 != null) {
@@ -42,6 +42,8 @@ public class MergeTwoSortedLists {
 
 
     // Merge K sorted Lists
+    // https://leetcode.com/problems/merge-k-sorted-lists/description/
+    // hard question, we can use divide and conquer approach, we can merge two lists at a time, and then merge the merged list with the next list, and so on, until we have merged all the lists, this will take O(n log k) time complexity, where n is the total number of nodes in all the lists and k is the number of lists
     // https://www.youtube.com/watch?v=3H9izDal-pA&list=PLFdAYMIVJQHN6J5-OCh7pbG0o8WHC9so3&index=29
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists == null || lists.length == 0) {

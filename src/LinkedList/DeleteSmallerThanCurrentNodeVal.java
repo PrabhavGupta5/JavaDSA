@@ -1,12 +1,11 @@
 package LinkedList;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 // https://leetcode.com/problems/remove-nodes-from-linked-list/description/
 // We have reversed the linked list than looking for maximum value seen so far, if the next is smaller than the current one, skip that node
 public class DeleteSmallerThanCurrentNodeVal {
-
+    LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>();
     // In this question we have to remove the nodes which are smaller than the current node, so we will reverse the linked list and then check for the maximum value seen so far, if the next node is smaller than the current node, we will skip that node
     public static ListNode removeNodes(ListNode head) {
         head = reverse(head);
@@ -34,6 +33,9 @@ public class DeleteSmallerThanCurrentNodeVal {
         }
         return prev;
     }
+
+    Deque<Integer> dq = new ArrayDeque<>();
+    LinkedHashMap<Integer, Integer> map2 = new LinkedHashMap<>();
 
     public static void main(String[] args) {
         Queue<Integer> ll = new LinkedList<>();

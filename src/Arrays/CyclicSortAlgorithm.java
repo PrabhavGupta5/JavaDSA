@@ -9,13 +9,12 @@ public class CyclicSortAlgorithm {
         int i = 0;
 
         while(i < nums.length) {
-            int correct = nums[i] - 1;
+            int correct = nums[i] - 1; // correct index for the number at index i
             if(nums[i] != nums[correct]) {
 
                 int temp = nums[i];
                 nums[i] = nums[correct];
                 nums[correct] = temp;
-
             } else {
                 i++;
             }
@@ -33,8 +32,10 @@ public class CyclicSortAlgorithm {
     // example:
     // Input: nums = [4,3,2,7,8,2,3,1]
     // Output: [5,6]
+    // After first pass, the array will look like this: [1,2,3,4,3,2,7,8]
     // Explanation: The numbers 5 and 6 do not appear in the array.
-    // In the first pass, we will place each number in its correct position. After the first pass, the array will look like this: [1,2,3,4,3,2,7,8]. In the second pass, we will check for each index if the number at that index is equal to the index + 1. If it is not equal, then it means that the number at that index is missing from the array. In this case, we will add the index + 1 to our list of missing numbers. After the second pass, we will have our final list of missing numbers which is [5,6].
+    // In the first pass, we will place each number in its correct position. After the first pass, the array will look like this: [1,2,3,4,3,2,7,8].
+    // In the second pass, we will check for each index if the number at that index is equal to the index + 1. If it is not equal, then it means that the number at that index is missing from the array. In this case, we will add the index + 1 to our list of missing numbers. After the second pass, we will have our final list of missing numbers which is [5,6].
 
 
 
@@ -68,6 +69,7 @@ public class CyclicSortAlgorithm {
     }
     // example: [3,4,-1,1]
     // after sort array becomes : [1,-1,3,4]
+    // missing number is 2, which is the index that is not equal to the number at that index, which is -1, so we will return 2 as the missing number.
 
 
 
@@ -103,5 +105,37 @@ public class CyclicSortAlgorithm {
     // example: [3,0,1]
     // after sort array becomes : [0,1,3]
     // missing number is 2, which is the index that is not equal to the number at that index, which is 3, so we will return 2 as the missing number.
+
+
+
+
+
+    // Find the Duplicate Number
+    // https://leetcode.com/problems/find-the-duplicate-number/description/
+    public int findDuplicate(int[] nums) {
+        // In the range 1 to n, so cyclic sort
+        int i = 0;
+        while(i < nums.length) {
+            int correctIdx = nums[i] - 1;
+            if(nums[i] != nums[correctIdx]) {
+                int temp = nums[correctIdx];
+                nums[correctIdx] = nums[i];
+                nums[i] = temp;
+            }
+            else
+                i++;
+        }
+
+        for(int j = 0; j < nums.length; j++) {
+            if(nums[j] != j+1)
+                return nums[j];
+        }
+
+        return 0;
+    }
+
+    // example: [1,3,4,2,2]
+    // after sort array becomes : [1,2,3,4,2]
+    // duplicate number is 2, which is the number that is present at the index that is not equal to the number at that index, which is 2, so we will return 2 as the duplicate number.
 
 }

@@ -35,7 +35,7 @@ public class HappyNumber {
     public boolean isHappy2(int n) {
         // First create a set to check if that number is visited or not, if not proceed
         // as if is visited it will be in a loop so not happy number
-        // why use set
+        // why use set because we want to check if the number is already present in the set or not, if it is present then it means we are in a loop and we can return false, if it is not present then we can add it to the set and continue the process until we get 1 or we find a loop.
         HashSet<Integer> set = new HashSet<>();
 
         while(!set.contains(n)) { // We are iterating for every n which calc calculates, which is not present, it will stop when n becomes n or n is present in the set

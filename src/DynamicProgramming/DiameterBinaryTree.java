@@ -17,24 +17,22 @@ public class DiameterBinaryTree {
     }
 
     static class Solution {
-        int res =Integer.MIN_VALUE;
+        int max = 0;
 
         public int diameterOfBinaryTree(TreeNode root) {
-            solve(root);
-            return res - 1;
+            maxDepth(root);
+            return max; // returning max as it contains diameter
         }
 
-        public int solve(TreeNode root) {
-            if(root == null)
-                return 0; // base condition
+        private int maxDepth(TreeNode root) {
+            if (root == null) return 0;
 
-            int left = solve(root.left); //hypothetical solution
-            int right = solve(root.right);
+            int left = maxDepth(root.left);
+            int right = maxDepth(root.right);
 
-            int temp = Math.max(left,right)+1; // to calculate max length for that particular root node
-            int ans = left+right+1;
-            res = Math.max(res,ans);
-            return temp; // returning to the next upper node this temp value
+            max = Math.max(max, left + right); // calculation of diameter
+
+            return Math.max(left, right) + 1; // for this node return its depth
         }
     }
 }
