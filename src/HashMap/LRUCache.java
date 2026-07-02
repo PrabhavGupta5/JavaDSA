@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 
 public class LRUCache {
     // Here we are using LinkedHashMap to implement LRU Cache, because it maintains the order of insertion and allows us to easily remove the least recently used item when the cache exceeds its capacity. The get and put operations are O(1) on average, making it efficient for our use case.
+    // LinkedHashMap internally maintains a doubly linked list + hash map, exactly what an LRU Cache needs.
     LinkedHashMap<Integer,Integer> cache;
     int capacity = 0;
 

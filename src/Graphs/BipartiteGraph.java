@@ -5,6 +5,7 @@ import java.util.*;
 // A graph is bipartite if we can split its set of nodes into two independent subsets A and B such that every edge in the graph connects a node in set A and a node in set B.
 // Only odd length cycles are not bipartite, even length cycles are bipartite. Every other graph is bipartite. So we can use DFS or BFS to color the graph in two colors, if we find a node that is already colored with the same color as its neighbor, then the graph is not bipartite.
 public class BipartiteGraph {
+    // https://youtu.be/NeU-C1PTWB8?si=JoYt9Sw4RwwHH_Ub
     public boolean isBipartite(int[][] graph) {
         // we will solve using dfs
         int n = graph.length;
@@ -83,9 +84,7 @@ public class BipartiteGraph {
                     colorArr[nei] = 1 - colorArr[v];
                     q.offer(nei);
                 }
-
             }
-
         }
 
         return true;

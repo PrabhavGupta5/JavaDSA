@@ -33,7 +33,9 @@ public class MaxProductSubArray {
                 //suffix product, moving from right 
                 rightProduct *= nums[nums.length - 1 - i];
 
-                ans = Math.max(ans, Math.max(leftProduct, rightProduct));
+                int maxProd = Math.max(leftProduct, rightProduct);
+
+                ans = Math.max(ans, maxProd);
             }
 
             return ans;

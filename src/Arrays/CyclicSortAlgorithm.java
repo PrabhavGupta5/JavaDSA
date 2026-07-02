@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CyclicSortAlgorithm {
+
     public List<Integer> findDisappearedNumbers(int[] nums) {
         List<Integer> list = new ArrayList<>();
         int i = 0;
@@ -23,7 +24,6 @@ public class CyclicSortAlgorithm {
         for(i = 0; i < nums.length; i++) {
             if(nums[i] != i + 1)
                 list.add(i + 1);
-
         }
 
         return list;
@@ -138,4 +138,13 @@ public class CyclicSortAlgorithm {
     // after sort array becomes : [1,2,3,4,2]
     // duplicate number is 2, which is the number that is present at the index that is not equal to the number at that index, which is 2, so we will return 2 as the duplicate number.
 
+
+    ///  Rule to remember for Cyclic Sort
+    ///
+    /// Case 1: Values are [0, n]
+    // correct = nums[i];
+    // if(nums[i] < nums.length)
+
+    // Case 2: Values are [1, n]
+    // No length check needed.
 }

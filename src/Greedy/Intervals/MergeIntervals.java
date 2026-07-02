@@ -14,20 +14,31 @@ public class MergeIntervals {
         }
 
         // Sort intervals by start time
-        Arrays.sort(intervals, Comparator.comparingInt(i -> i[0]));
-
+        Arrays.sort(intervals, (a,b) -> a[0] - b[0]);
         List<int[]> merged = new ArrayList<>();
         int[] currentInterval = intervals[0];
         merged.add(currentInterval);
 
-        for (int[] interval : intervals) {
-            if (interval[0] <= currentInterval[1]) { // Overlapping intervals
-                currentInterval[1] = Math.max(currentInterval[1], interval[1]);
-            } else { // Non-overlapping interval
-                currentInterval = interval;
+//        for (int[] interval : intervals) {
+//            if (interval[0] <= currentInterval[1]) { // Overlapping intervals
+//                currentInterval[1] = Math.max(currentInterval[1], interval[1]);
+//            } else { // Non-overlapping interval
+//                currentInterval = interval;
+//                merged.add(currentInterval);
+//            }
+//        }
+
+        for(int i = 1; i < intervals.length; i++){
+            if(intervals[i][0] <= currentInterval[1]) { // end is smaller // overlapping interval
+                currentInterval[1] = Math.max(intervals[i][1], currentInterval[1]); // end set
+            }
+
+            else {
+                currentInterval=intervals[i];
                 merged.add(currentInterval);
             }
         }
+
 
         return merged.toArray(new int[merged.size()][]);
     }

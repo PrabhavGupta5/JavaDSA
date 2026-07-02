@@ -21,4 +21,33 @@ public class FindKthLargest {
 
         return pq.peek();
     }
+
+
+    // Heap Type
+    //
+    //Syntax
+    //
+    //Min Heap (Integer)
+    //
+    //new PriorityQueue<>()
+    //
+    //Max Heap (Integer)
+    //
+    //new PriorityQueue<>(Collections.reverseOrder())
+    //
+    //Min Heap (Custom)
+    //
+    //(a, b) -> Integer.compare(a.x, b.x)
+    //
+    //Max Heap (Custom)
+    //
+    //(a, b) -> Integer.compare(b.x, a.x)
+    //
+    //Min Heap (int[])
+    //
+    //(a, b) -> Integer.compare(a[1], b[1])
+    //
+    //Max Heap (int[])
+    //
+    //(a, b) -> Integer.compare(b[1], a[1])
 }

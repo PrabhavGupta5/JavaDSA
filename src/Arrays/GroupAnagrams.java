@@ -16,14 +16,13 @@ import java.util.List;
 // Space complexity : O(N*K) for the hashmap and the result list
 public class GroupAnagrams {
     public List<List<String>> groupAnagrams(String[] strs) {
-        HashMap<String, List<String>> map  = new HashMap<>();
+        HashMap<String, List<String>> map  = new HashMap<>(); // map to store the unique key and the list of anagrams
 
         if (strs == null || strs.length == 0) {
             return new ArrayList<>();
         }
 
         for(String s : strs) {
-
             int[] count = new int[26];
             for(char c : s.toCharArray()) {
                 count[c-'a']++;
@@ -39,9 +38,15 @@ public class GroupAnagrams {
                 map.put(key, list);
             }
 
-            list.add(s);
+            list.add(s); // Add the string to the list of anagrams for the unique key
         }
 
         return new ArrayList<>(map.values());
     }
+
+    // Dry run example:
+    // Input: ["eat","tea","tan","ate","nat","bat"]
+    // Output: [["bat"],["nat","tan"],["ate","eat","tea"]
+    // dry run : first string "eat" will have freq array [1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0] and key "[1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1]" will be created and added to the map with value ["eat"]
+    // then second string "tea"
 }
